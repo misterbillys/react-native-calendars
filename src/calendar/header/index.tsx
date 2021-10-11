@@ -198,7 +198,10 @@ class CalendarHeader extends Component<Props> {
           testID={testID ? `${HEADER_MONTH_NAME}-${testID}` : HEADER_MONTH_NAME}
           {...webProps}
         >
-          {formatNumbers(month?.toString(monthFormat))}
+          {XDate.defaultLocale === 'th' ? new Date(month).toLocaleDateString("th-TH", {
+            year: "numeric",
+            month: "long",
+          }) : formatNumbers(month?.toString(monthFormat))}
         </Text>
       </Fragment>
     );
